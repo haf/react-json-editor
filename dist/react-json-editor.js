@@ -130,13 +130,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.props.submitOnChange) {
 	      this.props.onSubmit(output, null, errors);
 	    }
-	    else {
-	      this.setState({
-	        values: values,
-	        output: output,
-	        errors: errors
-	      });
-	    }
+
+	    this.setState({
+	      values: values,
+	      output: output,
+	      errors: errors
+	    });
 	  },
 	  getValue: function(path) {
 	    return ou.getIn(this.state.values, path);
@@ -151,7 +150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  preventSubmit: function(event) {
 	    event.preventDefault();
 	  },
-	  handleSubmit: function(event) {
+	  handleSubmit: function(event) {  
 	    this.props.onSubmit(this.state.output,
 	                        event.target.value,
 	                        this.state.errors);
@@ -658,7 +657,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return ou.merge(ou.setIn(dereferenced[options.indexOf(selected)],
 	                           [ 'properties', selector ],
 	                           ou.merge(ou.getIn(schema, [ 'properties', selector]),
-	                                    { enum: options })),
+	                                    { enum: options,
+	                                      enumNames: schema['enumNames'] })),
 	                  { type: 'object' });
 	};
 

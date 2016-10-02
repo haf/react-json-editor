@@ -1021,7 +1021,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      {
 	        name    : this.props.label,
 	        value   : this.props.value || this.props.values[0],
-	        onChange: this.handleChange
+	        onChange: this.handleChange,
+	        className : 'form-control'
 	      },
 	      this.props.values.map(function(opt, i) {
 	        return $.option({ key: opt, value: opt }, names[i] || opt);
